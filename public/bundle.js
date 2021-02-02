@@ -1,0 +1,1 @@
+$((function(){$("p").css("background-color","green")}));
