@@ -5,7 +5,6 @@
     <title>Moran's I Visualization</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="plot_style.css" />
-    <script src="public/d3.min.js"></script>
     <script src="public/jquery.min.js"></script>
     <script src="public/bundle.js"></script>
 </head>
@@ -28,13 +27,14 @@
                 <div id="bar_chart_area">
                     <h3>Global Moran's I Estimate</h3>
                     <div id="bar_chart"></div>
+                    <p id="global_moran_pvalue"></p>
                 </div>
                 <div id="info">
                     <div id="info_county" class="hidden">
                         <h3 id="county_name"></h3>
-                        <p>Value: 100m</p>
-                        <p>Local Moran: 1201</p>
-                        <p>Local Moran P-Value: 1201</p>
+                        <p>Value: </p>
+                        <p>Local Moran: </p>
+                        <p>Local Moran P-Value:</p>
                     </div>
                 </div>
             </div>
@@ -44,6 +44,7 @@
                 <div id="type_stacked_heatmap" class="option">Stacked Heat Map</div>
                 <div id="type_quantile" class="option">Quantile Map</div>
             </div>
+            <div id="plot_title"><h3 id="plot_date"></h3></div>
             <div id="plot_map"></div>
             <div id="plot_timeline">
                 -------------------------------
