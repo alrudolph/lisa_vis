@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Moran's I Visualization</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="plot_style.css" />
-        <script src="public/jquery.min.js"></script>
-        <script src="public/bundle.js"></script>
-    </head>
-    <body>
-        <main>
-            <h1>LISA</h1>
-            <p>HELLO</p>
-            <!--
+
+<head>
+    <title>Moran's I Visualization</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="plot_style.css" />
+    <script src="public/d3.min.js"></script>
+    <script src="public/jquery.min.js"></script>
+    <script src="public/bundle.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>This is the title</h1>
+        <p>This is a description.</p>
+        <!--
 
                 The following section is just the plot part, if you want to extract it for your own use
                 requires: - plot_style.css
@@ -19,30 +22,47 @@
                           - bundle.js
 
             -->
-            <div id="alex_plot">
-                <div id="plot_header">
-
+        <div id="alex_plot">
+            <hr style="border: solid black 1px; width: 100%" />
+            <div id="plot_header">
+                <div id="bar_chart_area">
+                    <h3>Global Moran's I Estimate</h3>
+                    <div id="bar_chart"></div>
                 </div>
-                <div id="plot_map">
-
-                </div>
-                <div id="plot_timeline">
-
-                </div>
-                <div id="plot_controls">
-                    <div id="plot_controls_play">
-
-                    </div>
-                    <div id="plot_controls_pause">
-
+                <div id="info">
+                    <div id="info_county" class="hidden">
+                        <h3 id="county_name"></h3>
+                        <p>Value: 100m</p>
+                        <p>Local Moran: 1201</p>
                     </div>
                 </div>
             </div>
-            <!--
+            <hr style="border: solid black 1px; width: 100%" />
+            <div id="plot_types">
+                <div id="type_heatmap" class="option">Heat Map</div>
+                <div id="type_stacked_heatmap" class="option">Stacked Heat Map</div>
+                <div id="type_quantile" class="option">Quantile</div>
+            </div>
+            <div id="plot_map"></div>
+            <div id="plot_timeline">
+                -------------------------------
+            </div>
+            <div id="plot_controls">
+                <div id="plot_controls_play">
+                    Play
+                </div>
+                <div id="plot_controls_pause">
+                    Pause
+                </div>
+            </div>
+            <hr style="border: solid black 1px; width: 100%" />
+        </div>
+        <!--
 
 
 
             -->
-        </main>
-    </body>
+    </main>
+</body>
+
 </html>
