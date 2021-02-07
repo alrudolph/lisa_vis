@@ -10,3 +10,9 @@ body {
 main {
   width: 800px;
 }
+
+@media (max-width: 800px) {
+  main {
+    min-width: 98%;
+  }
+}

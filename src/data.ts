@@ -13,24 +13,8 @@ export const globalMoranPvalue = (week: number): string => {
     const p = heatData.weighted_average_g[week][1];
 
     let ub = "";
-
-    if (p < 0.0000001) {
-        ub = "10^-8"
-    }
-    else if (p < 0.000001) {
-        ub = "10^-7"
-    }
-    else if (p < 0.00001) {
-        ub = "10^-6"
-    }
-    else if (p < 0.0001) {
-        ub = "10^-5"
-    }
-    else if (p < 0.0001) {
-        ub = "10^-4"
-    }
-    else if (p < 0.001) {
-        ub = "10^-3"
+    if (p < 0.001) {
+        ub = "10^" + Math.ceil(Math.log10(p))
     }
     else if (p < 0.01) {
         ub = "0.01"
@@ -47,12 +31,14 @@ export const globalMoranPvalue = (week: number): string => {
 
 const formatDate = (input: number): string => {
     const date = new Date(input);
-    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    return `${month < 10 ? "0" + month : month}/${day < 10 ? "0" + day : day}/${date.getFullYear()}`
 }
 
 export const getDateRange = (week: number): string => {
     const [start, end] = heatData.date[week];
-    return `Week from ${formatDate(start)} to ${formatDate(end)}`;
+    return `Distance Traveled ${formatDate(start)} to ${formatDate(end)}`;
 }
 
 export const getQuantileColors = (week: number): Array<string> => {

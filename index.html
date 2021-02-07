@@ -11,8 +11,10 @@
 
 <body>
     <main>
+        <!--
         <h1>This is the title</h1>
         <p>This is a description.</p>
+        -->
         <!--
 
                 The following section is just the plot part, if you want to extract it for your own use
@@ -27,34 +29,55 @@
                 <div id="bar_chart_area">
                     <h3>Global Moran's I Estimate</h3>
                     <div id="bar_chart"></div>
-                    <p id="global_moran_pvalue"></p>
+                    <p id="global_moran_pvalue">P-value</p>
                 </div>
                 <div id="info">
                     <div id="info_county" class="hidden">
-                        <h3 id="county_name"></h3>
+                        <!--<h3 id="county_name"></h3>
                         <p>Value: </p>
                         <p>Local Moran: </p>
-                        <p>Local Moran P-Value:</p>
+                        <p>Local Moran P-Value:</p>-->
+                    </div>
+                    <div id="color_display">
+                        <div id="quantile_colors">
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                        </div>
+                        <div id="heat_colors">
+                            <div class="color"></div>
+                            <div class="color"></div>
+                            <div class="color"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <hr style="border: solid black 1px; width: 100%" />
             <div id="plot_types">
-                <div id="type_heatmap" class="option">Heat Map</div>
+                <div id="type_heatmap" class="option option_selected">Heat Map</div>
                 <div id="type_stacked_heatmap" class="option">Stacked Heat Map</div>
                 <div id="type_quantile" class="option">Quantile Map</div>
             </div>
-            <div id="plot_title"><h3 id="plot_date"></h3></div>
+            <div id="plot_title"><h3 id="plot_date">Distance Travelled</h3></div>
             <div id="plot_map"></div>
             <div id="plot_timeline">
-                -------------------------------
             </div>
             <div id="plot_controls">
-                <div id="plot_controls_play">
+                <div id="plot_controls_prev" class="option">
+                    Prev
+                </div>
+                <div id="plot_controls_play" class="option">
                     Play
                 </div>
-                <div id="plot_controls_pause">
-                    Pause
+                <div id="plot_controls_next" class="option">
+                    Next
                 </div>
             </div>
             <hr style="border: solid black 1px; width: 100%" />

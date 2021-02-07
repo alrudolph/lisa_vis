@@ -33,8 +33,8 @@ export const updateMap = (what: "heat" | "heat_stacked" | "quantile", week: numb
 
 export const updateBarPlot = (week: number) => {
     $("#global_moran_pvalue").text(globalMoranPvalue(week));
-    const e = globalMoranEstimate(week);
+    const est = globalMoranEstimate(week);
     const svg = d3.select("#bar_chart").transition();
-    svg.select(".bar").duration(100).attr("d", e).attr("width", e * 500);
-    svg.select(".label").attr("x", e * 500 + 10).text(Math.floor(e * 1000) / 1000);
+    svg.select(".bar").duration(150).attr("d", est).attr("width",est * 350);
+    svg.select(".label").duration(225).attr("x", est * 350 + 10).text(Math.floor(est * 1000) / 1000);
 }

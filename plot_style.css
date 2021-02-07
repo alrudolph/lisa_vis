@@ -29,6 +29,10 @@
   margin: 0;
 }
 
+#bar_chart svg {
+  background-color:#cad6e8;
+}
+
 #info {
   width: 50%;
 }
@@ -69,10 +73,24 @@
   border: solid black 1px;
   border-radius: 20px;
   cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 .option_selected {
   border-width: 2px;
+}
+
+.color {
+  height: 10px;
+  width: 10px;
+  border-radius: 10px;
+  border: 1px lightgray solid;
 }
 
 div.tooltip {
@@ -93,5 +111,12 @@ div.tooltip {
 #plot_timeline {
 }
 
+#plot_date {
+  margin-bottom: 0;
+}
+
 #plot_controls {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
