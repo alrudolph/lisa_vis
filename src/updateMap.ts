@@ -41,7 +41,12 @@ export const updateMap = (what: "heat" | "heat_stacked" | "quantile", week: numb
             const quantiles = [0, ...getQuantileBin(week)];
             $("#quantile_colors").children().each(function (i, elem) {
                 $(elem).children().each(function (i2, elem2) {
-                    $(elem2).children("p").text(Math.round(quantiles[i * 5 + i2]) + "-" + Math.round(quantiles[i * 5 + i2 + 1]))
+                    $(elem2).children("p").text(
+                        i * 4 + i2 + 1 == 7 ?
+                        ">20000m"
+                        :
+                        Math.round(quantiles[i * 4 + i2]) + "m - " + Math.round(quantiles[i * 4 + i2 + 1]) +"m"
+                    )
                 })
             })
         } break;
