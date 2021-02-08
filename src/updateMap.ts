@@ -32,7 +32,7 @@ export const updateMap = (what: "heat" | "heat_stacked" | "quantile", week: numb
     switch(what) {
         case "heat": {
             colors = getHeatColors(week);
-        }
+        } break;
         case "heat_stacked": {
             colors = getStackColors(week);
         } break;
