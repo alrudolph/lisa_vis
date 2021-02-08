@@ -35,6 +35,26 @@
 
 #info {
   width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#quantile_colors {
+  display: flex;
+}
+
+#group1 {
+  padding-right: 10px;
+}
+
+.color_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.color_container p {
+  margin: 0;
 }
 
 #info_county {
@@ -87,10 +107,11 @@
 }
 
 .color {
-  height: 10px;
-  width: 10px;
-  border-radius: 10px;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
   border: 1px lightgray solid;
+  margin: 2px;
 }
 
 div.tooltip {

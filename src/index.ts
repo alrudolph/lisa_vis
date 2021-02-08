@@ -1,11 +1,28 @@
 import { map, barPlot } from "./plots"
 import { updateMap, updateBarPlot } from "./updateMap"
 
+
 $(async () => {
   let type: "heat" | "quantile" | "heat_stacked" = "heat"
   let week = 0;
   let playing = false;
 
+  $("#heat_colors").hide()
+  $("#quantile_colors").hide()
+
+  const heatColorsDisplay = ["#ffffff", "#ff0000", "#0000ff"];
+  const heatTextDisplay = ["Not Significant", "Hot Area", "Cold Area"];
+  const quantileColorDisplay = ["#FFFF00", "#FFE700", "#FFD000", "#FFB900", "#FFA200", "#FF8B00", "#FF7000", "#FF6000", "#FF4000", "#FF2000"]
+
+  $("#heat_colors").children().each(function (i, elem) {
+      $(elem).children(".color").css("background-color", heatColorsDisplay[i])
+      $(elem).children("p").text(heatTextDisplay[i]);
+  });
+  $("#quantile_colors").children().each(function (i, elem) {
+      $(elem).children().each(function (i2, elem2) {
+          $(elem2).children(".color").css("background-color", quantileColorDisplay[(i * 5) + i2])
+      })
+  })
   
   const intrvl = (func: Function) => setInterval(() => {
     func();

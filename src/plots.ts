@@ -1,4 +1,4 @@
-import * as d3 from "d3";
+import * as d3 from "d3"
 
 export const map = async () => {
     const map_width = 500,
@@ -15,7 +15,7 @@ export const map = async () => {
     const projection = d3.geoAlbersUsa().scale(2500).translate([1050, 300]);
     const map_path = d3.geoPath().projection(projection);
 
-    const data: any = await d3.json("public/map.json");
+    const data: any = await (d3 as any).json("public/map.json");
 
     map_g
         .append("g")
