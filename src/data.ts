@@ -43,7 +43,7 @@ export const getDateRange = (week: number): string => {
 }
 
 export const getQuantileColors = (week: number): Array<string> => {
-    const colors = ["#FFFFFF", "#FFFF00", "#FFD000", "#FFA200", "#FF7000", "#FF6000", "#FF4000", "#FF2000"]
+    const colors = ["#FFFFFF", "#FFFF00", "#FFD000", "#FFA200", "#FF7000", "#FF5000", "#FF0000"]
     return quantileData.weighted_average[week].map(val => {
         return colors[val];
     });
