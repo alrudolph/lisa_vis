@@ -38,7 +38,7 @@ export const updateMap = (what: "heat" | "heat_stacked" | "quantile", week: numb
         } break;
         case "quantile": {
             colors = getQuantileColors(week);
-            const quantiles = [0, ...getQuantileBin(week)];
+            const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
             $("#quantile_colors").children().each(function (i, elem) {
                 $(elem).children().each(function (i2, elem2) {
                     $(elem2).children("p").text(
