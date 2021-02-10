@@ -12,7 +12,7 @@ $(async () => {
 
   const heatColorsDisplay = ["#ffffff", "#ff0000", "#0000ff"];
   const heatTextDisplay = ["Not Significant", "Hot Area", "Cold Area"];
-  const quantileColorDisplay = ["#FFFFFF", "#FFFF00", "#FFD000", "#FFA200", "#FF7000", "#FF5000", "#FF0000"]
+  const quantileColorDisplay = ["#26abff", "#8cd3ff", "#d9f1ff", /* <- COLD */"#FFFFFF" /* HOT -> */, "#F6BDC0", "#F1959B", "#F07470", "#EA4C46", "#DC1C13"]
 
   $("#heat_colors").children().each(function (i, elem) {
       $(elem).children(".color").css("background-color", heatColorsDisplay[i])

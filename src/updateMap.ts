@@ -38,14 +38,16 @@ export const updateMap = (what: "heat" | "heat_stacked" | "quantile", week: numb
         } break;
         case "quantile": {
             colors = getQuantileColors(week);
-            const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
+            //const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
+            const quantiles = [-3, -2, -1, 0, 0, 1, 2, 3, 4, 5]
             $("#quantile_colors").children().each(function (i, elem) {
                 $(elem).children().each(function (i2, elem2) {
                     $(elem2).children("p").text(
-                        i * 4 + i2 + 1 == 7 ?
+                        i * 4 + i2 == 3 ? 0 : `${quantiles[i * 4 + i2]} - ${quantiles[i * 4 + i2 + 1]} std`
+                        /*i * 4 + i2 + 1 == 7 ?
                         ">20000m"
                         :
-                        Math.round(quantiles[i * 4 + i2]) + "m - " + Math.round(quantiles[i * 4 + i2 + 1]) +"m"
+                        Math.round(quantiles[i * 4 + i2]) + "m - " + Math.round(quantiles[i * 4 + i2 + 1]) +"m"*/
                     )
                 })
             })
