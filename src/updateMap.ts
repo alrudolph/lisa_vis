@@ -33,6 +33,10 @@ export const updateMap = (
 
   switch (what) {
     case "heat":
+      {
+        colors = getHeatColors(week);
+      }
+      break;
     case "heat_stacked":
       {
         colors = getStackColors(week);
@@ -41,7 +45,7 @@ export const updateMap = (
     case "quantile":
       {
         colors = getQuantileColors(week);
-        const quantiles = [0, ...getQuantileBin(week)];
+        const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
         $("#quantile_colors")
           .children()
           .each(function (i, elem) {
@@ -51,9 +55,12 @@ export const updateMap = (
                 $(elem2)
                   .children("p")
                   .text(
-                    Math.round(quantiles[i * 5 + i2]) +
-                      "-" +
-                      Math.round(quantiles[i * 5 + i2 + 1])
+                    i * 4 + i2 + 1 == 7
+                      ? ">20000m"
+                      : Math.round(quantiles[i * 4 + i2]) +
+                          "m - " +
+                          Math.round(quantiles[i * 4 + i2 + 1]) +
+                          "m"
                   );
               });
           });

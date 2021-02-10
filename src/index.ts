@@ -1,32 +1,48 @@
-import { map, barPlot } from "./plots"
-import { updateMap, updateBarPlot } from "./updateMap"
-
+import { map, barPlot } from "./plots";
+import { updateMap, updateBarPlot } from "./updateMap";
 
 $(async () => {
-  let type: "heat" | "quantile" | "heat_stacked" = "heat"
+  let type: "heat" | "quantile" | "heat_stacked" = "heat";
   let week = 0;
   let playing = false;
 
-  $("#heat_colors").hide()
-  $("#quantile_colors").hide()
+  $("#heat_colors").hide();
+  $("#quantile_colors").hide();
 
   const heatColorsDisplay = ["#ffffff", "#ff0000", "#0000ff"];
-  const heatTextDisplay = ["Not Significant", "Hot Area", "Cold Area"];
-  const quantileColorDisplay = ["#FFFF00", "#FFE700", "#FFD000", "#FFB900", "#FFA200", "#FF8B00", "#FF7000", "#FF6000", "#FF4000", "#FF2000"]
+  const heatTextDisplay = ["Not Significant", "Hot Spot", "Cold Spot"];
+  const quantileColorDisplay = [
+    "#FFFFFF",
+    "#FFFF00",
+    "#FFD000",
+    "#FFA200",
+    "#FF7000",
+    "#FF5000",
+    "#FF0000",
+  ];
 
-  $("#heat_colors").children().each(function (i, elem) {
-      $(elem).children(".color").css("background-color", heatColorsDisplay[i])
+  $("#heat_colors")
+    .children()
+    .each(function (i, elem) {
+      $(elem).children(".color").css("background-color", heatColorsDisplay[i]);
       $(elem).children("p").text(heatTextDisplay[i]);
-  });
-  $("#quantile_colors").children().each(function (i, elem) {
-      $(elem).children().each(function (i2, elem2) {
-          $(elem2).children(".color").css("background-color", quantileColorDisplay[(i * 5) + i2])
-      })
-  })
-  
-  const intrvl = (func: Function) => setInterval(() => {
-    func();
-  }, 300)
+    });
+  $("#quantile_colors")
+    .children()
+    .each(function (i, elem) {
+      $(elem)
+        .children()
+        .each(function (i2, elem2) {
+          $(elem2)
+            .children(".color")
+            .css("background-color", quantileColorDisplay[i * 4 + i2]);
+        });
+    });
+
+  const intrvl = (func: Function) =>
+    setInterval(() => {
+      func();
+    }, 300);
 
   let playingInterval: any;
 
@@ -34,7 +50,7 @@ $(async () => {
     playing = val;
     clearInterval(playingInterval);
     $("#plot_controls_play").text(week < 47 ? "Play" : "Reset");
-  }
+  };
 
   await map();
   updateMap(type, week);
@@ -72,15 +88,15 @@ $(async () => {
     week = week < 47 ? week + 1 : 0;
     setPlaying();
     updateMap(type, week);
-    updateBarPlot(week)
-  })
+    updateBarPlot(week);
+  });
 
   $("#plot_controls_prev").on("click", () => {
     week = week > 0 ? week - 1 : 47;
     setPlaying();
     updateMap(type, week);
-    updateBarPlot(week)
-  })
+    updateBarPlot(week);
+  });
 
   $("#plot_controls_play").on("click", function () {
     if (week >= 47) {
@@ -93,16 +109,16 @@ $(async () => {
     if (playing) {
       const inc = () => {
         updateMap(type, ++week);
-        updateBarPlot(week)
-  
+        updateBarPlot(week);
+
         if (week >= 47) {
           playing = false;
           $(this).text("Reset");
           clearInterval(playingInterval);
         }
-      }
+      };
       playingInterval = intrvl(inc);
       playingInterval();
     }
-  })
+  });
 });

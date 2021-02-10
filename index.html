@@ -11,10 +11,7 @@
 
 <body>
     <main>
-        <h1>This is the title</h1>
-        <i>Created by ... under the guidance of ... as a part of MOVE UCSB /
-            <a href="ink">this</a> paper.
-        </i>
+        <h1>Spatial Autocorrelation in California</h1>
         <!--
 
                 The following section is just the plot part, if you want to extract it for your own use
@@ -23,6 +20,7 @@
                           - public/bundle.js
 
             -->
+        <p>The following chart shows three different types of plots.</p>
         <h3>LISA Map</h3>
         <p>Here is what this map is showing.</p>
         <h3>Stacked LISA Map</h3>
@@ -63,20 +61,8 @@
                                     <div class="color"></div>
                                     <p></p>
                                 </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
                             </div>
                             <div id="group2">
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
                                 <div class="color_container">
                                     <div class="color"></div>
                                     <p></p>
@@ -110,9 +96,9 @@
             </div>
             <hr style="border: solid black 1px; width: 100%" />
             <div id="plot_types">
-                <div id="type_heatmap" class="option option_selected">Heat Map</div>
-                <div id="type_stacked_heatmap" class="option">Stacked Heat Map</div>
-                <div id="type_quantile" class="option">Quantile Map</div>
+                <div id="type_heatmap" class="option option_selected">LISA Map</div>
+                <div id="type_stacked_heatmap" class="option">Stacked LISA Map</div>
+                <div id="type_quantile" class="option">Average Distance Per County</div>
             </div>
             <div id="plot_title">
                 <h3 id="plot_date">Distance Travelled</h3>
@@ -135,18 +121,17 @@
         </div>
         <i>Source: Safegraph</i>
 
-
         <h3>Global Moran I</h3>
         <p>This is a description.<sup>[1]</sup></p>
+
         <h3>Local Moran I</h3>
+        <p>Significant areas</p>
 
         <h3>False Discovery Rate</h3>
+        <p>P-value calculation. More conservative.</p>
 
         <h3>Methadology / How it was calculated / Data and Processing</h3>
         <p>Here is how I did the calculations. See the function here:<a href="">Link to other repo</a></p>
-
-        <h4>References</h4>
-        <p>1. I could also put references down here like a paper.</p>
 
     </main>
 </body>
