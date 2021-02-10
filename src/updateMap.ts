@@ -7,6 +7,7 @@ import {
   globalMoranEstimate,
   globalMoranPvalue,
   getQuantileBin,
+  getYear,
 } from "./data";
 
 import * as d3 from "d3";
@@ -29,6 +30,7 @@ export const updateMap = (
 
   let colors: Array<string>;
 
+  $("#year_disp").text(`Year: ${getYear(week)}`);
   swap(what !== "quantile");
 
   switch (what) {
@@ -45,7 +47,8 @@ export const updateMap = (
     case "quantile":
       {
         colors = getQuantileColors(week);
-        const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
+        //const quantiles = [0, 1000, 2500, 5000, 10000, 15000, 20000, 100000];
+        const quantiles = [-3, -2, -1, 0, 0, 1, 2, 3, 4, 5];
         $("#quantile_colors")
           .children()
           .each(function (i, elem) {
@@ -55,12 +58,15 @@ export const updateMap = (
                 $(elem2)
                   .children("p")
                   .text(
-                    i * 4 + i2 + 1 == 7
-                      ? ">20000m"
-                      : Math.round(quantiles[i * 4 + i2]) +
-                          "m - " +
-                          Math.round(quantiles[i * 4 + i2 + 1]) +
-                          "m"
+                    i * 4 + i2 == 3
+                      ? 0
+                      : `${quantiles[i * 4 + i2]} to ${
+                          quantiles[i * 4 + i2 + 1]
+                        } std`
+                    /*i * 4 + i2 + 1 == 7 ?
+                        ">20000m"
+                        :
+                        Math.round(quantiles[i * 4 + i2]) + "m - " + Math.round(quantiles[i * 4 + i2 + 1]) +"m"*/
                   );
               });
           });

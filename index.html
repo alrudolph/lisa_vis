@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="plot_style.css" />
     <script src="public/jquery-3.5.1.min.js"></script>
     <script src="public/bundle.js"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 </head>
 
 <body>
@@ -20,13 +21,21 @@
                           - public/bundle.js
 
             -->
-        <p>The following chart shows three different types of plots.</p>
+        <p>This document assess the Global and Local Moran's I for distance travelled in California from December
+            2019 to November 2020. Three plots are shown below: the LISA Map, Stacked LISA Map and Average Distance Per
+            County.</p>
         <h3>LISA Map</h3>
-        <p>Here is what this map is showing.</p>
+        <p>The LISA Map shows significant hot or cold spots in the given period of time. Note that many weeks do not
+            have significant hot or cold spots.</p>
         <h3>Stacked LISA Map</h3>
-        <p>Here is what this map is showing.</p>
+        <p>The Stacked LISA Map is a cumulative version of the LISA Map with more recent hot spots or cold spots being
+            shaded in with a darker color.</p>
         <h3>Average Distance Per County</h3>
-        <p>Here is what this map is showing.</p>
+        <p>The Average Distance Per County map shows the counties' standard deviation from the weekly mean. Switching
+            between the LISA Map and the Average Distance Per County map on weeks with hot or cold spots
+            demonstrates the meaning of hot and cold spots. By doing this, you can clearly see that a hot or cold spot
+            has a high
+            or low value along with its neighboring counties.</p>
         <div id="alex_plot">
             <hr style="border: solid black 1px; width: 100%" />
             <div id="plot_header">
@@ -35,49 +44,27 @@
                     <div id="bar_chart"></div>
                     <p id="global_moran_pvalue">P-value</p>
                 </div>
-                <div id="info">
-                    <div id="info_county" class="hidden">
-                        <!--<h3 id="county_name"></h3>
-                        <p>Value: </p>
-                        <p>Local Moran: </p>
-                        <p>Local Moran P-Value:</p>-->
-                    </div>
-                    <div id="color_display">
-                        <div id="quantile_colors">
-                            <div id="group1">
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
+                <div id="color_display">
+                    <div id="quantile_colors">
+                        <div id="group1">
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
                             </div>
-                            <div id="group2">
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
-                                <div class="color_container">
-                                    <div class="color"></div>
-                                    <p></p>
-                                </div>
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
+                            </div>
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
+                            </div>
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
                             </div>
                         </div>
-                        <div id="heat_colors">
+                        <div id="group2">
                             <div class="color_container">
                                 <div class="color"></div>
                                 <p></p>
@@ -90,15 +77,40 @@
                                 <div class="color"></div>
                                 <p></p>
                             </div>
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
+                            </div>
+                            <div class="color_container">
+                                <div class="color"></div>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="heat_colors">
+                        <div class="color_container">
+                            <div class="color"></div>
+                            <p></p>
+                        </div>
+                        <div class="color_container">
+                            <div class="color"></div>
+                            <p></p>
+                        </div>
+                        <div class="color_container">
+                            <div class="color"></div>
+                            <p></p>
                         </div>
                     </div>
                 </div>
             </div>
             <hr style="border: solid black 1px; width: 100%" />
             <div id="plot_types">
-                <div id="type_heatmap" class="option option_selected">LISA Map</div>
-                <div id="type_stacked_heatmap" class="option">Stacked LISA Map</div>
-                <div id="type_quantile" class="option">Average Distance Per County</div>
+                <div id="buttons">
+                    <div id="type_heatmap" class="option option_selected">LISA Map</div>
+                    <div id="type_stacked_heatmap" class="option">Stacked LISA Map</div>
+                    <div id="type_quantile" class="option">Average Distance Per County</div>
+                </div>
+                <p id="year_disp"></p>
             </div>
             <div id="plot_title">
                 <h3 id="plot_date">Distance Travelled</h3>
@@ -119,20 +131,40 @@
             </div>
             <hr style="border: solid black 1px; width: 100%" />
         </div>
-        <i>Source: Safegraph</i>
+        <i>Source: <a href="https://docs.safegraph.com/docs/social-distancing-metrics">Safegraph Social Distancing
+                Metrics</a></i>
 
-        <h3>Global Moran I</h3>
-        <p>This is a description.<sup>[1]</sup></p>
+        <h3>Global Moran's I</h3>
+        <p>Global Moran's I is a measure of spatial autocorrelation, with values greater than zero indicating spatial
+            clustering and values below zero indicating spatial dispersion. Since for each week the Global Moran's I is
+            significant and positive, this means that there is spatial clustering between the high and low values for
+            each week.</p>
 
-        <h3>Local Moran I</h3>
-        <p>Significant areas</p>
+        <h3>Local Moran's I</h3>
+        <p>Our Global Moran's I estimate indicates that there is clustering of high and low values, so to find the hot
+            and cold spots, we use the Local Moran's I. The p-value for this test is calculated by randomly permutating
+            the neighborhood values to see if the counties' Local Moran's I test was just chance or not.</p>
 
         <h3>False Discovery Rate</h3>
-        <p>P-value calculation. More conservative.</p>
+        <p>The False Discovery Rate has been proposed as a more conservative way to identify significant values than
+            just using the randomized Local Moran's I test as described above<sup>[1]</sup>. The False Discovery Rate is
+            used in the
+            LISA maps in order to reduce false positives and find the centers of hot or cold spots.</p>
 
-        <h3>Methadology / How it was calculated / Data and Processing</h3>
-        <p>Here is how I did the calculations. See the function here:<a href="">Link to other repo</a></p>
+        <h3>Data and Processing</h3>
+        <p>
+            The data used for these plots come from the bucketed_distance_traveled column of the
+            <a href="https://docs.safegraph.com/docs/social-distancing-metrics">Safegraph Social Distancing
+                Metrics</a> dataset. A weighted average of this column is used to account for methadological differences
+            between versions of the data set.
+            The rest of the steps are shown in
+            <a href="https://github.com/alrudolph/lisa_vis/blob/main/data/get_data.ipynb">this Jupyter Notebook</a>.
+        </p>
 
+        <h4>References</h4>
+        <p>1. Benjamini, Y., and Y. Hochberg. 1995. “Controlling the False Discovery Rate: A Practical and Powerful
+            Approach to Multiple Testing.” Journal of the Royal Statistical Society B 57 (1): 289–300.
+        </p>
     </main>
 </body>
 

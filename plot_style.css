@@ -12,6 +12,14 @@ main > p {
   margin-top: 0;
 }
 
+#year_disp {
+  margin: 0;
+  display: flex;
+  align-self: center;
+  justify-self: self-end;
+  font-weight: bold;
+}
+
 #plot_header {
   display: flex;
   flex-direction: row;
@@ -20,6 +28,12 @@ main > p {
 
 #plot_header h3 {
   margin-top: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  #plot_header {
+    flex-wrap: wrap;
+  }
 }
 
 #plot_title {
@@ -41,10 +55,41 @@ main > p {
   background-color: #cad6e8;
 }
 
+#plot_date {
+  text-align: center;
+}
+
 #info {
   width: 50%;
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 800px) {
+  #info {
+    flex-wrap: wrap;
+  }
+
+  #plot_header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  #buttons {
+    flex-wrap: wrap;
+  }
+
+  #plot_types {
+    justify-content: center !important;
+  }
+}
+
+.color_container {
+  width: 150px;
+}
+
+h4 {
+  margin-bottom: 0;
 }
 
 #quantile_colors {
@@ -93,6 +138,15 @@ main > p {
 #plot_types {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .option {
@@ -148,4 +202,16 @@ div.tooltip {
   display: flex;
   justify-content: center;
   cursor: pointer;
+}
+
+#type_heatmap {
+  width: 80px;
+}
+
+#type_stacked_heatmap {
+  width: 150px;
+}
+
+#type_quantile {
+  width: 250px;
 }

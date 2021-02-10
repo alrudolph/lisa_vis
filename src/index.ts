@@ -12,13 +12,15 @@ $(async () => {
   const heatColorsDisplay = ["#ffffff", "#ff0000", "#0000ff"];
   const heatTextDisplay = ["Not Significant", "Hot Spot", "Cold Spot"];
   const quantileColorDisplay = [
-    "#FFFFFF",
-    "#FFFF00",
-    "#FFD000",
-    "#FFA200",
-    "#FF7000",
-    "#FF5000",
-    "#FF0000",
+    "#26abff",
+    "#8cd3ff",
+    "#d9f1ff",
+    /* <- COLD */ "#FFFFFF" /* HOT -> */,
+    "#F6BDC0",
+    "#F1959B",
+    "#F07470",
+    "#EA4C46",
+    "#DC1C13",
   ];
 
   $("#heat_colors")
